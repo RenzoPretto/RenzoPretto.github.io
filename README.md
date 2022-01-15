@@ -40,3 +40,11 @@ These requirements are intentionally left out of the design requirements so as t
 * SQL proficiency
 * Integration with a Maps API for distance calculations and trip planning.
 
+## Team Members
+
+* Chris Phang
+* Renzo Pretto
+* Ganesh Sundar
+* Daniel Johnson
+
+
