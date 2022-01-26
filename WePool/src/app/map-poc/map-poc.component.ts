@@ -15,8 +15,6 @@ export class MapPOCComponent implements OnInit {
   public link: string = "";
   geocoder: google.maps.Geocoder;
   map : google.maps.Map;
-  inputVal: any;
-  results : any;
 
   constructor(private http : HttpClient) { }
 
@@ -47,10 +45,8 @@ export class MapPOCComponent implements OnInit {
     let destEnc = encodeURIComponent(this.search.getVal().dest);
 
     //Uses promises await HTTP request resolving in getGeocode function
-    let response = await this.getGeocode(oriEnc);
-    let oriLoc = this.results;
-    response = await this.getGeocode(destEnc);
-    let destLoc = this.results;
+    let oriLoc = await this.getGeocode(oriEnc);
+    let destLoc = await this.getGeocode(destEnc);
 
     //Edits map to show route between origin and destination locations
     this.changeMap(oriLoc, destLoc);
@@ -61,22 +57,14 @@ export class MapPOCComponent implements OnInit {
 
   //Calls Google Geocode API in order to translate a location to a latitude and longitude necessary for Google DirectionsService API
   //Creates a promise that resolves after HTTP request finishes retreiving information
-  async getGeocode(location : string) {
+  getGeocode(location : string) {
     let _url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GlobalConstants.myKey;
-    let promise = new Promise<void>((resolve, reject) => {
-      this.http.get(_url).toPromise()
-        .then(
-          res => { // Success
-          this.results = parseJSON(res).results[0].geometry.location;
-          resolve();
-          },
-          msg => { // Error
-            console.log(msg);
-            reject(msg);
-          }
-        );
-    });    
-    return promise;
+    return this.http.get(_url).toPromise()
+    .then(
+      res => { // Success
+        return parseJSON(res).results[0].geometry.location;
+      }
+    );
   }
 
   //Edits map on screen to show route between origin and destination
