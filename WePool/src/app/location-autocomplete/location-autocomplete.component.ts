@@ -9,17 +9,9 @@ import { GlobalConstants } from '../common/global-constants';
 })
 export class LocationAutocompleteComponent implements OnInit {
 
-  @Output() setAddress: EventEmitter<any> = new EventEmitter();
-  @Output() messageEvent = new EventEmitter<string>();
+  oriInput = "originInput";
+  destInput = "destinationInput"
   autocomplete: google.maps.places.Autocomplete;
-
-  value: any;
-
-  getVal() {
-    let ori = document.getElementById('autocomplete1').value;
-    let dest = document.getElementById('autocomplete2').value;
-    return {ori, dest};
-  }
 
   constructor() { }
 
@@ -29,24 +21,29 @@ export class LocationAutocompleteComponent implements OnInit {
     libraries: ["places"]
   });
 
+  //Initializes each autocomplete fields on page
   ngOnInit(): void {
+    this.loadFile(this.oriInput);
+    this.loadFile(this.destInput);
+  }
+
+  //Code for initializing autocomplete object
+  loadFile(id : string) {
     this.loader.load().then(() => {
       this.autocomplete = new google.maps.places.Autocomplete (
-        document.getElementById('autocomplete1') as HTMLInputElement,
-        {
-          types: ['address'],
-          componentRestrictions: {'country': ['US']},
-          fields: ['name']
-        });
-    })
-    this.loader.load().then(() => {
-      this.autocomplete = new google.maps.places.Autocomplete (
-        document.getElementById('autocomplete2') as HTMLInputElement,
+        document.getElementById(id) as HTMLInputElement,
         {
           componentRestrictions: {'country': ['US']},
           fields: ['name']
         });
     })
+  }
+
+  //Retrieves values from inputs
+  getVal() {
+    let ori = document.getElementById(this.oriInput).value;
+    let dest = document.getElementById(this.destInput).value;
+    return {ori, dest};
   }
 
 }

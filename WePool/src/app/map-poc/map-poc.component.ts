@@ -16,6 +16,7 @@ export class MapPOCComponent implements OnInit {
   geocoder: google.maps.Geocoder;
   map : google.maps.Map;
   inputVal: any;
+  results : any;
 
   constructor(private http : HttpClient) { }
 
@@ -25,6 +26,7 @@ export class MapPOCComponent implements OnInit {
     libraries: ["places"]
   });
 
+  //Initializes map on page opening
   ngOnInit(): void {
     this.loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
@@ -35,35 +37,30 @@ export class MapPOCComponent implements OnInit {
     });
   }
 
+  //Accesses location-autocomplete component in HTML of id search
   @ViewChild('search' /* #name or Type*/, {static: false}) search;
 
+  //Sets map and link using given origin and destination
   async initRoute() {
-    let origin = this.search.getVal().ori;
-    let destination = this.search.getVal().dest;
-    let oriEnc = encodeURIComponent(origin);
-    let destEnc = encodeURIComponent(destination);
+    //Creates encoded URI components from location-autocomplete component input objects. Needs to be encoded in order to use them in link API.
+    let oriEnc = encodeURIComponent(this.search.getVal().ori);
+    let destEnc = encodeURIComponent(this.search.getVal().dest);
+
+    //Uses promises await HTTP request resolving in getGeocode function
     let response = await this.getGeocode(oriEnc);
     let oriLoc = this.results;
     response = await this.getGeocode(destEnc);
     let destLoc = this.results;
-    let directionsService : google.maps.DirectionsService = new google.maps.DirectionsService(),
-        directionsDisplay : google.maps.DirectionsRenderer = new google.maps.DirectionsRenderer(),
-        request = {
-          origin : new google.maps.LatLng(oriLoc.lat, oriLoc.lng),
-          destination : new google.maps.LatLng(destLoc.lat, destLoc.lng),
-          travelMode: google.maps.TravelMode.DRIVING
-    }
-    directionsDisplay.setMap(this.map);
-    directionsService.route(request, (result, status) => {
-      if (status == 'OK') {
-        directionsDisplay.setDirections(result);
-      }
-    })
+
+    //Edits map to show route between origin and destination locations
+    this.changeMap(oriLoc, destLoc);
+
+    //Sets link to Google directions page using given origin and destination
     this.link = "https://www.google.com/maps/dir/?api=1&origin=" + oriEnc + "&destination=" + destEnc + "&travelmode=driving";
   }
 
-  results : any;
-
+  //Calls Google Geocode API in order to translate a location to a latitude and longitude necessary for Google DirectionsService API
+  //Creates a promise that resolves after HTTP request finishes retreiving information
   async getGeocode(location : string) {
     let _url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GlobalConstants.myKey;
     let promise = new Promise<void>((resolve, reject) => {
@@ -81,8 +78,27 @@ export class MapPOCComponent implements OnInit {
     });    
     return promise;
   }
+
+  //Edits map on screen to show route between origin and destination
+  changeMap(originLocation : any, destinationLocation : any) {
+    let directionsService : google.maps.DirectionsService = new google.maps.DirectionsService(),
+        directionsDisplay : google.maps.DirectionsRenderer = new google.maps.DirectionsRenderer(),
+        request = {
+          origin : new google.maps.LatLng(originLocation.lat, originLocation.lng),
+          destination : new google.maps.LatLng(destinationLocation.lat, destinationLocation.lng),
+          travelMode: google.maps.TravelMode.DRIVING
+    }
+    directionsDisplay.setMap(this.map);
+    directionsService.route(request, (result, status) => {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(result);
+      }
+    })
+  }
+  
 }
 
+//Parses JSON file to a readable object
 function parseJSON(data: any) {
   return JSON.parse(JSON.stringify(data));
 }
