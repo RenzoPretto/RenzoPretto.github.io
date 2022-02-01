@@ -58,8 +58,8 @@ export class MapPOCComponent implements OnInit {
   //Calls Google Geocode API in order to translate a location to a latitude and longitude necessary for Google DirectionsService API
   //Creates a promise that resolves after HTTP request finishes retreiving information
   getGeocode(location : string) {
-    let _url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GlobalConstants.myKey;
-    return this.http.get(_url).toPromise()
+    let url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=" + GlobalConstants.myKey;
+    return this.http.get(url).toPromise()
     .then(
       res => { // Success
         return parseJSON(res).results[0].geometry.location;

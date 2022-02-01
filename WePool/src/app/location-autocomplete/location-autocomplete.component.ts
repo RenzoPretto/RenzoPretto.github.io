@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { GlobalConstants } from '../common/global-constants';
 
@@ -41,8 +41,8 @@ export class LocationAutocompleteComponent implements OnInit {
 
   //Retrieves values from inputs
   getVal() {
-    let ori = document.getElementById(this.oriInput).value;
-    let dest = document.getElementById(this.destInput).value;
+    let ori = (<HTMLInputElement>document.getElementById(this.oriInput)).value;
+    let dest = (<HTMLInputElement>document.getElementById(this.destInput)).value;
     return {ori, dest};
   }
 
