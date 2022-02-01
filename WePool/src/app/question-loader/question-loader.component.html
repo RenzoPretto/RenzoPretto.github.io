@@ -1,0 +1,5 @@
+<ul>
+    <div *ngFor="let question of questions">
+      <question-component id="questionComponent" [question]="question.question" [type]="question.type"></question-component>
+    </div>
+  </ul>
