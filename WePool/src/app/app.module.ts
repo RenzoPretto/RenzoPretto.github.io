@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ModerationComponent } from './moderation/moderation.component';
 import { LoginComponent } from './login/login.component';
+import { MapPOCComponent } from './map-poc/map-poc.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import { LocationAutocompleteComponent } from './location-autocomplete/location-autocomplete.component';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +34,9 @@ import { LoginComponent } from './login/login.component';
     AdministrationComponent,
     ModerationComponent,
     LoginComponent
+    MapPOCComponent,
+    LocationAutocompleteComponent
+
   ],
   imports: [
     MatToolbarModule,
@@ -35,6 +47,14 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule
+    MatSliderModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
