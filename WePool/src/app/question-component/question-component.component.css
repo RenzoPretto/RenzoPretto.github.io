@@ -1,0 +1,23 @@
+#slider {
+    left: 1350px;
+    bottom: 1px;
+    position: static;
+}
+#checkbox {
+    left: 1500px;
+    position: static;
+}
+#card {
+    right: 20px;
+    background-color: rgb(200, 236, 236);
+}
+#question {
+    font-family: 'Helvetica', sans-serif;
+    font-size: large;
+    width:1300px;
+    display:inline-block;
+}
+#text {
+    font-family: 'Helvetica', sans-serif;
+    font-size: medium;
+}

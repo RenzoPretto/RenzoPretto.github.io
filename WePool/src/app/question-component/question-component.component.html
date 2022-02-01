@@ -1,0 +1,18 @@
+<div>
+    <mat-card id="card">
+        <div [ngSwitch]="type">
+            <mat-label id="question">{{question}}</mat-label>
+            <span id="slider"  *ngSwitchCase="'slider'">
+                <span id="text">Strongly Disagree&nbsp;</span>
+                <mat-slider min="1" max="5" step="1" value="1" thumbLabel="true"></mat-slider>
+                <span id="text">Strongly Agree</span>
+            </span>
+            <span id="checkbox" *ngSwitchCase="'checkbox'">
+                <span id="text">Off&nbsp;</span>
+                <mat-slide-toggle color="primary"></mat-slide-toggle>
+                <span id="text">&nbsp;On</span>
+            </span>
+            <h2 *ngSwitchDefault>Default</h2>
+        </div>
+    </mat-card>
+</div>
