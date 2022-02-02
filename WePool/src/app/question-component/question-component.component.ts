@@ -11,6 +11,7 @@ export class QuestionComponentComponent implements OnInit {
   @Input() type : string;
   input : string = "1";
 
+
   constructor() { 
   }
 
