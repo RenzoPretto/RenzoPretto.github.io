@@ -33,7 +33,7 @@ import { LocationAutocompleteComponent } from './location-autocomplete/location-
     ProfileComponent,
     AdministrationComponent,
     ModerationComponent,
-    LoginComponent
+    LoginComponent,
     MapPOCComponent,
     LocationAutocompleteComponent
 
@@ -46,7 +46,7 @@ import { LocationAutocompleteComponent } from './location-autocomplete/location-
     MatCardModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     MatSliderModule,
     BrowserAnimationsModule,
     FormsModule,
