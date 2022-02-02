@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationAutocompleteComponent } from './location-autocomplete/location-autocomplete.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LocationAutocompleteComponent } from './location-autocomplete/location-
     ModerationComponent,
     LoginComponent,
     MapPOCComponent,
-    LocationAutocompleteComponent
+    LocationAutocompleteComponent,
+    ToolbarComponent
 
   ],
   imports: [
