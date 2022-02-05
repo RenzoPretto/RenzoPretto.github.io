@@ -1,4 +1,4 @@
-# Tasks Accomplised in Sprint 1
+# Tasks Accomplished in Sprint 1
 ## _Frontend_
 - Created a wireframe diagram for the website layout
 - Developed a homepage for the app
