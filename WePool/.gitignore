@@ -40,6 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/src/app/common/global-constants.ts
 
 # System Files
 .DS_Store

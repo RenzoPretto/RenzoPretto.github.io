@@ -1,0 +1,47 @@
+#wrapper { position: relative; }
+.full {
+    width: 100vw;
+    height: 100vh;
+}
+.link {
+  position: relative;
+  z-index: 10;
+  top: 100px;
+  left: 50px;
+}
+.submit {
+  position: relative;
+  z-index: 10;
+  top: 100px;
+  left: 20px;
+}
+.search {
+  position: absolute;
+}
+.card {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  z-index: 5;
+  height: 165px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin:2em; 
+  width:300px;
+}
+#map {
+  position: static;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+.body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map #infowindow-content {
+  display: inline;
+}

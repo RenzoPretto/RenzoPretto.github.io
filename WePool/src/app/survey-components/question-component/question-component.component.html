@@ -7,17 +7,16 @@
             <span class="text">Strongly Agree</span>
         </span>
         <span *ngSwitchCase="'checkbox'" class="checkbox">
-            <span class="text">Off&nbsp;</span>
+            <span class="text">Definitely No&nbsp;&nbsp;</span>
             <mat-slide-toggle #checkbox (change)="updateCheckbox($event)" color="primary"></mat-slide-toggle>
-            <span class="text">&nbsp;On</span>
+            <span class="text">&nbsp;&nbsp;Yes!</span>
         </span>
         <span *ngSwitchCase="'textbox'" class="textbox">
-            <mat-form-field>
-                <mat-label>Input</mat-label>
+            <mat-form-field class="mat-form-field">
+                <mat-label style="color: white;">Input</mat-label>
                 <input matInput #inputText (change)="updateInput($event)" [(ngModel)]="input">
             </mat-form-field>
         </span>
         <h2 *ngSwitchDefault>Default</h2>
     </div>
 </mat-card>
-<button (click)="test()">test</button>

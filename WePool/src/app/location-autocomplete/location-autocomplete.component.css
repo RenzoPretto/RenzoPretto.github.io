@@ -1,0 +1,15 @@
+#container {
+  top: 0px;
+  position: absolute;
+}
+.origin {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+}
+.destination {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 45px;
+}

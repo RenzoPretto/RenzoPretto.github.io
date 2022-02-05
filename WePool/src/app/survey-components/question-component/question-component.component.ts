@@ -21,10 +21,6 @@ export class QuestionComponent implements OnInit {
     console.log(this.type)
   }
 
-  test() {
-    console.log(this.input);
-  }
-
   updateElement(event) {
     this.input = event.value;
   }

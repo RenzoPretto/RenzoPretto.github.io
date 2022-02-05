@@ -6,22 +6,53 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './survey-components/question-component/question-component.component';
 import { SurveyComponent } from './survey-components/survey/survey.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-import { MatSliderModule} from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatCardModule } from '@angular/material/card';
 import { QuestionLoaderComponent } from './survey-components/question-loader/question-loader.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { CarpoolsComponent } from './carpools/carpools.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { ModerationComponent } from './moderation/moderation.component';
+import { LoginComponent } from './login/login.component';
+import { MapPOCComponent } from './map-poc/map-poc.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
+import { LocationAutocompleteComponent } from './location-autocomplete/location-autocomplete.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     QuestionLoaderComponent,
-    SurveyComponent
+    SurveyComponent,
+    CarpoolsComponent,
+    HomeComponent,
+    ProfileComponent,
+    AdministrationComponent,
+    ModerationComponent,
+    LoginComponent,
+    MapPOCComponent,
+    LocationAutocompleteComponent,
+    ToolbarComponent
+
   ],
   imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatGridListModule,
+    MatCardModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -30,7 +61,8 @@ import { QuestionLoaderComponent } from './survey-components/question-loader/que
     MatSlideToggleModule,
     MatCardModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
