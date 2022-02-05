@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'question-component',
   templateUrl: './question-component.component.html',
   styleUrls: ['./question-component.component.css']
 })
-export class QuestionComponentComponent implements OnInit {
+export class QuestionComponent implements OnInit {
 
   @Input() question : string;
   @Input() type : string;
   input : string = "1";
+  @ViewChild('inputText') inputText: HTMLInputElement;
 
 
   constructor() { 
@@ -33,7 +34,7 @@ export class QuestionComponentComponent implements OnInit {
   }
 
   updateInput(event) {
-    this.input = event.value;
+    this.input = this.inputText.value;
   }
 
 }
