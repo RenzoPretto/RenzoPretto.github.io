@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'question-loader',
@@ -13,8 +13,16 @@ export class QuestionLoaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  questions = [{question: "When I ride, I am talkative and love to catch up with my coworkers about their out of work happenings!", type: "slider"},
-               {question: "My full name is...", type: "textbox"},
-               {question: "Food in the car?", type: "checkbox"}];
+  @Input() questions;
+  @Input() items = [];
+  @Output() newItemEvent = new EventEmitter<string[]>();
+
+  setResult(newItem: string, pos: number) {
+    this.items[pos] = newItem;
+  }
+
+  pushResults() {
+    this.newItemEvent.emit(this.items);
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'question-component',
@@ -10,9 +10,9 @@ export class QuestionComponent implements OnInit {
 
   @Input() question : string;
   @Input() type : string;
-  input : string;
+  @Output() input : string;
   @ViewChild('inputText') inputText: HTMLInputElement;
-
+  @Output() newItemEvent = new EventEmitter<string>();
 
   constructor() { 
   }
@@ -21,17 +21,24 @@ export class QuestionComponent implements OnInit {
     
   }
 
+  updateItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+  
   //Following three update the input value in this class whenever a change is made on the page
   updateElement(event) {
     this.input = event.value;
+    this.updateItem(this.input);
   }
 
   updateCheckbox(event) {
     this.input = event.checked;
+    this.updateItem(this.input);
   }
 
   updateInput(event) {
-    this.input = this.inputText.value;
+    this.input = this.inputText.toString();
+    this.updateItem(this.input);
   }
 
 }

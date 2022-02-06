@@ -14,7 +14,7 @@
         <span *ngSwitchCase="'textbox'" class="textbox">
             <mat-form-field class="mat-form-field">
                 <mat-label style="color: white;">Input</mat-label>
-                <input matInput #inputText (change)="updateInput($event)" [(ngModel)]="input">
+                <input matInput [(ngModel)]="inputText" (ngModelChange)="updateInput($event)">
             </mat-form-field>
         </span>
         <h2 *ngSwitchDefault>Default</h2>
