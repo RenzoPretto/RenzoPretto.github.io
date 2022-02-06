@@ -17,8 +17,7 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.question)
-    console.log(this.type)
+    
   }
 
   updateElement(event) {

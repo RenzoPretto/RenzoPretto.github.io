@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { QuestionComponent } from './survey-components/question-component/question-component.component';
-import { SurveyComponent } from './survey-components/survey/survey.component';
+import { QuestionComponent } from './profile/survey-components/question-component/question-component.component';
+import { SurveyComponent } from './profile/survey-components/survey/survey.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { QuestionLoaderComponent } from './survey-components/question-loader/question-loader.component';
+import { QuestionLoaderComponent } from './profile/survey-components/question-loader/question-loader.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

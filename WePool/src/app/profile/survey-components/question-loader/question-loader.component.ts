@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './question-loader.component.html',
   styleUrls: ['./question-loader.component.css']
 })
+//Component created to handle formatting of how questions will load in and load questions into question components
 export class QuestionLoaderComponent implements OnInit {
 
   constructor() { }
