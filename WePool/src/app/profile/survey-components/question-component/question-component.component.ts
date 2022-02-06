@@ -5,11 +5,12 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
   templateUrl: './question-component.component.html',
   styleUrls: ['./question-component.component.css']
 })
+//Individual questions loaded into component and stores current input
 export class QuestionComponent implements OnInit {
 
   @Input() question : string;
   @Input() type : string;
-  input : string = "1";
+  input : string;
   @ViewChild('inputText') inputText: HTMLInputElement;
 
 
@@ -20,6 +21,7 @@ export class QuestionComponent implements OnInit {
     
   }
 
+  //Following three update the input value in this class whenever a change is made on the page
   updateElement(event) {
     this.input = event.value;
   }
