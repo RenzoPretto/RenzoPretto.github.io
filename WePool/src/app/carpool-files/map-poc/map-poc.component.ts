@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
-import { GlobalConstants } from '../common/global-constants';
+import { GlobalConstants } from '../../common/global-constants';
 
 @Component({
   selector: 'app-map-poc',
