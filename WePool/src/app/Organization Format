@@ -1,5 +1,9 @@
 This file will outline organization details of this application and practices we are using to maintain legibility of this code base.
 
+Component Naming:
+    In order to maintain homogeneity across the code our component naming format will just be a suitable name for a component that is not already used
+    and should the name be multiple words, a '-' will seperate them.
+
 Component Groupings:
     Components are grouped into the categories based on the webpage they will be used for. Each xxx-files folder will contain the components necessary
     for the xxx page on our website. It will also contain the component that handles viewing xxx page that our routing module file will point to. This
