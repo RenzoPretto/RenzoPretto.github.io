@@ -4,14 +4,13 @@ import { AdministrationComponent } from './moderation-files/administration/admin
 import { CarpoolsComponent } from './carpool-files/carpools/carpools.component';
 import { HomeComponent } from './home-files/home/home.component';
 import { LoginComponent } from './account-files/login/login.component';
-import { MapPOCComponent } from './carpool-files/map-poc/map-poc.component';
 import { ModerationComponent } from './moderation-files/moderation/moderation.component';
 import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'carpools', component: MapPOCComponent },
+  { path: 'carpools', component: CarpoolsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'administration', component: AdministrationComponent },
   { path: 'moderation', component: ModerationComponent },
