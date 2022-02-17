@@ -1,0 +1,28 @@
+This file will outline organization details of this application and practices we are using to maintain legibility of this code base.
+
+Component Naming:
+    In order to maintain homogeneity across the code our component naming format will just be a suitable name for a component that is not already used
+    and should the name be multiple words, a '-' will seperate them.
+
+Component Groupings:
+    Components are grouped into the categories based on the webpage they will be used for. Each xxx-files folder will contain the components necessary
+    for the xxx page on our website. It will also contain the component that handles viewing xxx page that our routing module file will point to. This
+    will increase the legibility of our code due to not having so many files in our app folder.
+
+Modules:
+    Whenever we want to use a library that demands using many imports, we will create a new module.ts folder with the libraries name as the first line. 
+    E.g. library.module.ts. We will add all necessary imports and exports into this module which we will then call from our app.module.ts folder. The
+    purpose of this is to further reduce the number of imports in our app.module.ts and increase legibility of code.
+
+Index.ts:
+    Each folder containing components contains an index.ts file that exports the components in that folder. The purpose of this is to make the imports
+    in our app.module.ts more legible as similar components will all be imported on the same line. Whenever a component is added into any of the webpage
+    files, the export is added to the index.ts file and the import is added to the appropriate line on app.module.ts. This reduces the number of lines
+    imports take up in our app.module.ts and increases the legibility of our code.
+
+Misc Components:
+    For now miscellaneous components that may belong in multiple folders will be left in the app folder, should too many accumulate consider grouping them 
+    into some miscellaneous files folder.
+
+This file is not 100% accurate and exemptions may apply when proper practice goes against the current organization format we have layed out.
+They may be listed below:
