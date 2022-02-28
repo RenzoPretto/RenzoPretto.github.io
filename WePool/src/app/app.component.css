@@ -1,0 +1,8 @@
+#questionComponent {
+    top: 100px;
+    position: static;
+    padding: 5px;
+}
+#body {
+    font-family: 'Helvetica', sans-serif;
+}

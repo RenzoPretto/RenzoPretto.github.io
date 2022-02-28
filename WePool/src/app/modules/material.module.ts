@@ -7,6 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   exports: [
@@ -17,7 +18,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSliderModule,
     MatGridListModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ],
   imports: [
     MatButtonModule,
@@ -27,7 +29,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSliderModule,
     MatGridListModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }
