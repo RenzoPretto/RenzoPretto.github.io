@@ -1,7 +1,7 @@
 .question {
     font-family: 'Helvetica', sans-serif;
     font-size: larger;
-    width: 1200px;
+    width: 50%;
     display:inline-block;
     color:rgb(255, 255, 255);
 }
@@ -17,25 +17,25 @@
 }
 .card {
     position: static;
-    width: 1800px;
+    width: 96%;
     margin-top: 20px;
     background-color: #8a46b8;
     display: flex;
 }
 .slider {
     position: relative;
-    top: 10px;
+    top: 0px;
     color: mat-color;
 }
 .checkbox {
     position: relative;
-    left: 130px;
+    left: 0px;
     top: 0px;
 }
 .textbox {
     position: relative;
     top: 10px;
-    left: 80px;
+    left: 0px;
     color:rgb(255, 255, 255);
 }
 ::ng-deep .mat-focused .mat-form-field-label {

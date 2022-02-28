@@ -1,0 +1,9 @@
+.container {
+    position: absolute;
+    width: 330px;
+    top: 360px;
+    left: 40px;
+}
+.accordion {
+    background-color: rgba(255, 255, 255);
+}

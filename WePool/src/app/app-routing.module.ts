@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdministrationComponent } from './administration/administration.component';
-import { CarpoolsComponent } from './carpools/carpools.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MapPOCComponent } from './map-poc/map-poc.component';
-import { ModerationComponent } from './moderation/moderation.component';
+import { AdministrationComponent } from './moderation-files/administration/administration.component';
+import { CarpoolsComponent } from './carpool-files/carpools/carpools.component';
+import { HomeComponent } from './home-files/home/home.component';
+import { LoginComponent } from './account-files/login/login.component';
+import { ModerationComponent } from './moderation-files/moderation/moderation.component';
 import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'carpools', component: MapPOCComponent },
+  { path: 'carpools', component: CarpoolsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'administration', component: AdministrationComponent },
   { path: 'moderation', component: ModerationComponent },
