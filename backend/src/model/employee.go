@@ -1,8 +1,9 @@
 package model
 
+import "github.com/jinzhu/gorm"
+
 type Employee struct {
-	ID        uint `json:"id" gorm:"primary_key"`
+	gorm.Model
 	WorkEmail string `json:"workEmail"`
 	Password  string `json:"password"`
 }
-
