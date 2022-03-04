@@ -35,6 +35,7 @@ export class MapPOCComponent implements OnInit {
     });
   }
 
+  //Initializes map on change
   ngOnChange() {
     this.loader.load().then(() => {
       this.map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
