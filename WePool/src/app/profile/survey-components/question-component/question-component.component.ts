@@ -17,10 +17,20 @@ export class QuestionComponent implements OnInit {
   constructor() { 
   }
 
+  //Initiates value according to type
   ngOnInit(): void {
-    
+    if (this.type=="checkbox") {
+      this.updateItem("false");
+    } else if (this.type=="slider") {
+      this.updateItem("1");
+    } else if (this.type=="textbox") {
+      this.updateItem("");
+    } else {
+      this.updateItem("Empty");
+    }
   }
 
+  //Updates value in parent component
   updateItem(value: string) {
     this.newItemEvent.emit(value);
   }
