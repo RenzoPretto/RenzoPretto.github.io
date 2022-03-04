@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './account-files';
 import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './home-files';
+import { GroupRouterComponent } from './carpool-files/group-router/group-router.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HomeComponent } from './home-files';
     LocationAutocompleteComponent,
     ToolbarComponent,
     GroupInfoComponent,
+    GroupRouterComponent,
     SurveyComponent,
     QuestionComponent,
     QuestionLoaderComponent
