@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,27 +14,69 @@ export class LoginComponent implements OnInit {
   rusername:string;
   rpassword:string;
   rcpassword:string;
+  baseURL: string = "http://localhost:8000/signup";
   
-  constructor() { }
+  constructor(private http: HttpClient, private route: ActivatedRoute,
+    private router: Router) {
+    
+  }
 
   ngOnInit(): void {
   }
 
-  register() {
-    this.rusername == this.username;
-    this.rpassword == this.password;
-    console.log("User " + this.rusername + " has registered with password " + this.rpassword)
+  authServiceR(){
+    return this.http.post(this.baseURL, {"workEmail":this.rusername, "password":this.rpassword}, { observe: 'response' });
   }
-  login() {
-    if(this.rusername==this.username && this.password==this.rpassword){
-      console.log("User " + this.username + " has logged in with password " + this.password)
+
+  authServiceL(){
+    return this.http.post(this.baseURL, {"workEmail":this.username, "password":this.password}, { observe: 'response' });
+  }
+
+  register() {
+    this.authServiceR().subscribe(
+      (res) => {
+        if (res.status == 201) {
+          console.log(res);
+          this.router.navigate(['/profile']);
+        }
+        else if (res.status == 409) {
+          console.log(res);
+        }
+      }, (error)=>{
+        if (error.status === 500) {
+              alert('Server down please try after some time');
+        }
+        else if (error.status === 404) {
+             alert('Server down. Please try after some time');
+       }
+
+      });
     }
-    else{
-      console.log("Incorrect username or password")
+    
+
+  login() {
+    this.authServiceL().subscribe(
+      (res) => {
+        if (res.status == 200) {
+          console.log(res);
+          this.router.navigate(['/home']);
+        }
+        else if (res.status == 401) {
+          console.log(res);
+        }
+      }, (error)=>{
+        if (error.status === 500) {
+              alert('Server down please try after some time');
+        }
+        else if (error.status === 404) {
+             alert('Server down. Please try after some time');
+       }
+
+      });
     }
   }
 
-}
+
 
 
 
