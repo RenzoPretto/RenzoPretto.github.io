@@ -44,9 +44,11 @@ export class LoginComponent implements OnInit {
         }
       }, (error)=>{
         if (error.status === 500) {
+              console.log(error.status);
               alert('Server down please try after some time');
         }
         else if (error.status === 404) {
+             console.log(error.status);
              alert('Server down. Please try after some time');
        }
 
@@ -66,9 +68,11 @@ export class LoginComponent implements OnInit {
         }
       }, (error)=>{
         if (error.status === 500) {
+              console.log(error.status);
               alert('Server down please try after some time');
         }
         else if (error.status === 404) {
+             console.log(error.status);
              alert('Server down. Please try after some time');
        }
 
