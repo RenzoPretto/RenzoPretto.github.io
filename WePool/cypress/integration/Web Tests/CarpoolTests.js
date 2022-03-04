@@ -24,11 +24,11 @@ describe('Test group info component', () => {
   
   describe('Test directions scrolling.', () => {
     it('Scrolls halfway through the directions.', () => {
-      cy.contains('div[id="sidebar"]').scrollTo('center')
+      cy.get('span#sidebar').scrollTo('center')
       cy.wait(100)
     })
     it('Scrolls to the end of the directions.', () => {
-      cy.contains('div[id="sidebar"]').scrollTo('bottom')
+      cy.get('span#sidebar').scrollTo('bottom')
       cy.wait(100)
     })
   })
