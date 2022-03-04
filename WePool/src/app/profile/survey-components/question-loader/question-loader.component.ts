@@ -17,12 +17,15 @@ export class QuestionLoaderComponent implements OnInit {
   @Input() items = [];
   @Output() newItemEvent = new EventEmitter<string[]>();
 
+  //Sets value according to value passed up from child
   setResult(newItem: string, pos: number) {
     this.items[pos] = newItem;
   }
 
+  //Pushes results to survey base component to be used, displays values in console temporarily to show it is working
   pushResults() {
     this.newItemEvent.emit(this.items);
+    console.log(this.items);
   }
 
 }
