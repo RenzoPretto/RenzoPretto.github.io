@@ -25,19 +25,16 @@ describe('Test accessing the login page.', () => {
     })
     it('Failed Login', () => {
         cy.contains('Login').click()
-        cy.url().should('include', '/login')
-    })
-    it('Failed Registration', () => {
+        cy.get('#mat-input-0').type('Danny1234')
+        cy.get('#mat-input-1').type('Password4567')
         cy.contains('Login').click()
         cy.url().should('include', '/login')
     })
-    it('Fill in preferences.', () => {
-        cy.get('#question_5 > #body > .type > .slider > .mat-slider').type('{rightarrow}{leftarrow}')
-        cy.get('#question_6 > #body > .type > .slider > .mat-slider').type('{rightarrow}{leftarrow}{leftarrow}')
-        cy.get('#mat-slide-toggle-1 > .mat-slide-toggle-label > .mat-slide-toggle-bar > .mat-slide-toggle-thumb-container > .mat-slide-toggle-thumb').click()
-        cy.get('#question_8 > #body > .type > .slider > .mat-slider').type('{rightarrow}{rightarrow}')
-    })
-    it('Fill in must haves.', () => {
-        cy.get('#mat-slide-toggle-3 > .mat-slide-toggle-label > .mat-slide-toggle-bar > .mat-slide-toggle-thumb-container > .mat-slide-toggle-thumb').click()
+    it('Failed Registration', () => {
+        cy.contains('Register').click()
+        cy.get('#mat-input-0').type('Danny123')
+        cy.get('#mat-input-1').type('Password456')
+        cy.contains('Register').click()
+        cy.url().should('include', '/login')
     })
   })
