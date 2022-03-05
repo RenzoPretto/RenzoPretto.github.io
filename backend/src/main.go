@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -10,6 +11,8 @@ import (
 
 func main() {
 	router := gin.Default()
+	router.Use(cors.Default())
+
 	log.Println("******Listening for requests at http://localhost:8000/******")
 	model.ConnectDatabase()
 	log.Println("******Connected to DB!******")
