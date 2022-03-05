@@ -8,13 +8,31 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	database, err := gorm.Open("sqlite3", "test.db")
-
+	database, err := gorm.Open("sqlite3", "gorm.db")
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
 
-	database.AutoMigrate(&Employee{})
+	database.AutoMigrate(
+		&Employee{},
+		&Location{},
+		&Company{},
+		&Session{},
+	)
+	DB = database
+}
+
+func ConnectDatabaseForTesting() {
+	database, err := gorm.Open("sqlite3", ":memory:")
+	if err != nil {
+		panic("Failed to connect to database!")
+	}
+	database.AutoMigrate(
+		&Employee{},
+		&Location{},
+		&Company{},
+		&Session{},
+	)
 
 	DB = database
 }

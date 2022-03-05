@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"wepool.com/src/model"
 )
@@ -85,7 +86,7 @@ func Login(c *gin.Context) {
 	// Username or password is incorrect.
 	var employee model.Employee
 	result := model.DB.Where("work_email = ?", input.WorkEmail).First(&employee)
-	if result.Error != nil {
+	if result.RecordNotFound() {
 		c.JSON(http.StatusUnauthorized, "")
 		return
 	} else if employee.Password != input.Password {
@@ -126,11 +127,11 @@ func UserLogin(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	
+
 	if err := model.DB.Where("work_email = ? AND password=?", input.WorkEmail, input.Password).First(&employee).Error; err != nil {
 		c.JSON(401, gin.H{"error": "Invalid email or password"})
 		return
-	}	
+	}
 
 	c.JSON(http.StatusOK, gin.H{"data": employee})
 }

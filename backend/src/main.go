@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 	"wepool.com/src/controller"
 	"wepool.com/src/model"
 )
@@ -24,7 +25,7 @@ func main() {
 	router.POST("/login", controller.UserLogin)
 	router.POST("/login-session", controller.Login)
 	router.POST("/logout", controller.Logout)
-	
+
 	err := router.Run(":8000")
 	if err != nil {
 		panic(err)
