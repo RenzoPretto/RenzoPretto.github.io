@@ -66,7 +66,7 @@ func UserSignup(c *gin.Context) {
 	employee := model.Employee{WorkEmail: input.WorkEmail, Password: input.Password}
 	model.DB.Create(&employee)
 
-	c.JSON(http.StatusOK, employee)
+	c.JSON(201, employee)
 }
 
 /*
