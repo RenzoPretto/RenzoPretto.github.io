@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   rusername:string;
   rpassword:string;
   rcpassword:string;
-  baseURL: string = "http://localhost:8000/signup";
+  baseURL: string = "http://localhost:8000";
   
   constructor(private http: HttpClient, private route: ActivatedRoute,
     private router: Router) {
@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   authServiceR(){
-    return this.http.post(this.baseURL, {"workEmail":this.rusername, "password":this.rpassword}, { observe: 'response' });
+    return this.http.post(`${this.baseURL}/signup`, {"workEmail":this.rusername, "password":this.rpassword}, { observe: 'response' });
   }
 
   authServiceL(){
-    return this.http.post(this.baseURL, {"workEmail":this.username, "password":this.password}, { observe: 'response' });
+    return this.http.post(`${this.baseURL}/login`, {"workEmail":this.username, "password":this.password}, { observe: 'response' });
   }
 
   register() {
