@@ -2,7 +2,6 @@ package controller
 
 import (
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"wepool.com/src/model"
 )
@@ -54,7 +53,7 @@ POST /employee
 Create a new employee.
 May return OK, BadRequest
 */
-func CreateEmployee(c *gin.Context) {
+func UserSignup(c *gin.Context) {
 	// Validate input
 	var input CreateEmployeeInput
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -118,4 +117,20 @@ func Logout(c *gin.Context) {
 		model.DB.Delete(&session)
 	}
 	c.JSON(http.StatusOK, "")
+}
+
+func UserLogin(c *gin.Context) {
+	var employee model.Employee
+	var input CreateEmployeeInput
+	if err := c.ShouldBindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	
+	if err := model.DB.Where("work_email = ? AND password=?", input.WorkEmail, input.Password).First(&employee).Error; err != nil {
+		c.JSON(401, gin.H{"error": "Invalid email or password"})
+		return
+	}	
+
+	c.JSON(http.StatusOK, gin.H{"data": employee})
 }
