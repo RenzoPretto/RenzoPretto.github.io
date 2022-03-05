@@ -17,7 +17,9 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "Welcome to WePool!"})
 	})
 	// router.GET("/employee", controller.FindEmployeesInCompany)
-	router.POST("/employee", controller.CreateEmployee)
+	router.POST("/signup", controller.CreateEmployee)
+	router.POST("/login", controller.Login)
+	router.POST("/logout", controller.Logout)
 
 	err := router.Run(":8000")
 	if err != nil {
