@@ -1,14 +1,14 @@
 <div class="container">
-    <mat-accordion class="accordion" [multi]="false">
+    <mat-accordion class="accordion" [multi]="panelState">
         <div *ngFor="let rider of group; let i = index">
-            <mat-expansion-panel class="accordion">
+            <mat-expansion-panel class="mat-elevation-z0">
                 <mat-expansion-panel-header class="accordion">
                 <mat-panel-title>
-                    <b>Rider {{i+1}}: {{rider.fName}}</b>
+                    <b>Rider {{i+1}}: {{rider.name}}</b>
                 </mat-panel-title>
                 </mat-expansion-panel-header>
                 <b>Name: </b>
-                <p>{{rider.fName}} {{rider.lName}}</p>
+                <p>{{rider.name}}</p>
                 <b>Gender:</b>
                 <p>{{rider.gender}}</p>
                 <b>Phone Number: </b>

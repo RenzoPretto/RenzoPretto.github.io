@@ -1,0 +1,18 @@
+.container {
+    position: absolute;
+    width: 330px;
+    top: 130px;
+    left: 10px;
+}
+.accordion {
+    background-color: rgba(255, 255, 255);
+}
+.card {
+    margin: 20px;
+    height: 200px;
+    width: 700px;
+}
+.groupInfo {
+    position: relative;
+    top: 15px;
+}

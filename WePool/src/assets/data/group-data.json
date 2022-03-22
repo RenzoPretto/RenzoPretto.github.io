@@ -4,13 +4,21 @@
         "schedule": 1529644667834,
         "users" : [
             {   "name": "Renzo",
-                "address": "311 Southwest 13th Street, Gainesville, FL, USA" },
+                "address": "311 Southwest 13th Street, Gainesville, FL, USA",
+                "gender": "Male",
+                "phoneNum": "(305)930-3207" },
             {   "name": "Ganesh",
-                "address": "2800 Southwest 35th Place, Gainesville, FL, USA" },
+                "address": "2800 Southwest 35th Place, Gainesville, FL, USA",
+                "gender": "Male",
+                "phoneNum": "(305)456-3207"  },
             {   "name": "Daniel",
-                "address": "112 Center Drive, Gainesville, FL, USA" }, 
+                "address": "112 Center Drive, Gainesville, FL, USA",
+                "gender": "Male",
+                "phoneNum": "(305)789-3207"  }, 
             {   "name": "Chris",
-                "address": "320 Southeast 3rd Street, Gainesville, FL, USA" }
+                "address": "320 Southeast 3rd Street, Gainesville, FL, USA",
+                "gender": "Male",
+                "phoneNum": "(305)123-3207"  }
         ]
     }
 }
