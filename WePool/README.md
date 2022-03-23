@@ -42,9 +42,9 @@ These requirements are intentionally left out of the design requirements so as t
 
 ## Team Members
 
-* Chris Phang
-* Renzo Pretto
-* Ganesh Sundar
-* Daniel Johnson
+* Chris Phang - Backend
+* Renzo Pretto - Frontend
+* Ganesh Sundar - Backend
+* Daniel Johnson - Frontend
 
 
