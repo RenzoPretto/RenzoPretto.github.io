@@ -11,7 +11,9 @@ export class GroupServiceService {
   constructor(private http : HttpClient) { }
 
   private _url = "./assets/data/group-data.json";
+  private _userUrl = "";
 
+  //Gets group based off user
   async getGroup() {
     return this.http.get(this._url).toPromise()
     .then(
@@ -20,6 +22,28 @@ export class GroupServiceService {
       }
     );
   }
+
+  //Pass in user, build url to get profile info
+  async getUser(user : string) {
+    let url = user;
+    return this.http.get(this._url).toPromise()
+    .then(
+      res => { // Success
+        return parseJSON(res);
+      }
+    );
+  } 
+  
+  //Pass in group, build url to get group preferences
+  async getGroupPreferences(group : string) {
+    let url = group;
+    return this.http.get(this._url).toPromise()
+    .then(
+      res => { // Success
+        return parseJSON(res);
+      }
+    );
+  }  
 }
 
 function parseJSON(data: any) {

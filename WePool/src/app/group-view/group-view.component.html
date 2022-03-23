@@ -9,9 +9,13 @@
                 <mat-card-subtitle>Other option!</mat-card-subtitle>
             </ng-template>
             <mat-card-content>
-                <div *ngFor="let user of group.groupData.users; index as i;">
-                    <span style="font-size:larger">Rider {{i+1}}: {{user.name}}</span>
-                </div>>
+                <span>Riders:</span>
+                <span *ngFor="let user of group.groupData.users; index as i;" >
+                    {{user.name}}
+                </span>
+                <div>
+                    Preference match: {{comparePrefs(group)}}/6
+                </div>
             </mat-card-content>
             <mat-card-actions align="end">
                 <button mat-button>Join Group!</button>

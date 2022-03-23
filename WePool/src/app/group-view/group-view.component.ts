@@ -63,10 +63,10 @@ export class GroupViewComponent implements OnInit {
     console.log(this.groups[0]);
   }
 
-  comparePrefs() {
-    userData = this._groupInfoService.getUser().preferences;
-    groupData = this._groupInfoService.getGroupPreferences();
-    let count = 0;
+  comparePrefs(groupName : string) {
+    let userData = this._groupInfoService.getUser("renzo");
+    let groupData = this._groupInfoService.getGroupPreferences(groupName);
+    let count = 3;
     if (Math.abs(parseInt(userData[6])-parseInt(groupData[6])) <= 1) {
       count++;
     }
@@ -85,7 +85,7 @@ export class GroupViewComponent implements OnInit {
     if (userData[12] != groupData[12]) {
       return 0;
     }
-    return count + 3;
+    return count;
   }
 
 }
