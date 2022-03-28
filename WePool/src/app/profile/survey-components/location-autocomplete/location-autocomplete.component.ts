@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
-import { GlobalConstants } from '../../common/global-constants';
+import { GlobalConstants } from '../../../common/global-constants';
 
 @Component({
   selector: 'AutocompleteComponent',

@@ -10,6 +10,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -23,7 +25,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatGridListModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   imports: [
     MatButtonModule,
@@ -36,7 +40,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatToolbarModule,
     MatExpansionModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

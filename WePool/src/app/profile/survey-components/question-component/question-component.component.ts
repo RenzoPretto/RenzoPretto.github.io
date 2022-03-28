@@ -14,6 +14,13 @@ export class QuestionComponent implements OnInit {
   @ViewChild('inputText') inputText: HTMLInputElement;
   @Output() newItemEvent = new EventEmitter<string>();
 
+  companys = [
+    {value: 'one1', viewValue: 'one'},
+    {value: 'two2', viewValue: 'two'},
+    {value: 'three3', viewValue: 'three'},
+  ];
+  value;
+
   constructor() { 
   }
 

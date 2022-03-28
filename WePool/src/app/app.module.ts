@@ -10,9 +10,9 @@ import { ProfileComponent } from './profile/profile.component'; //Will change wh
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MapPOCComponent, LocationAutocompleteComponent, CarpoolsComponent, GroupInfoComponent } from './carpool-files';
+import { MapPOCComponent, CarpoolsComponent, GroupInfoComponent } from './carpool-files';
 import { AdministrationComponent, ModerationComponent } from './moderation-files';
-import { SurveyComponent, QuestionComponent, QuestionLoaderComponent } from './profile';
+import { SurveyComponent, LocationAutocompleteComponent, QuestionComponent, QuestionLoaderComponent } from './profile';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './account-files';
 import { MaterialModule } from './modules/material.module';

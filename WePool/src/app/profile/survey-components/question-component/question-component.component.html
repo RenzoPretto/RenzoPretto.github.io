@@ -21,6 +21,19 @@
                     <input matInput [(ngModel)]="inputText" (ngModelChange)="updateInput($event)">
                 </mat-form-field>
             </span>
+            <span *ngSwitchCase="'company'" class="company">
+                <mat-form-field appearance="fill">
+                    <mat-label style="color:white">Company</mat-label>
+                    <mat-select style="color:white">
+                        <mat-option style="color:white; background-color: #8a46b8;" class="companys" *ngFor="let company of companys" [value]="company.value">
+                          {{company.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </span>
+            <div *ngSwitchCase="'address'" class="address">
+                <AutocompleteComponent></AutocompleteComponent>
+            </div>
         </div>
     </mat-card>
 </ng-template>

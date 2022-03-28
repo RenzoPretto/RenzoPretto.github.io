@@ -38,6 +38,12 @@
     left: 0px;
     color:rgb(255, 255, 255);
 }
+.company {
+    color:rgb(255, 255, 255);
+}
+.address {
+    height: 50px;
+}
 .labelText {
     font-family: 'Helvetica', sans-serif;
     margin: 25px;
