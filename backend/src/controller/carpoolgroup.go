@@ -17,7 +17,7 @@ type AddUserToCarpoolGroupInput struct {
 }
 
 /*
-GET /
+GET /GetCarpoolGroupsByCompanyName
 Given a company name, return the list of CarpoolGroups
 associated with it.
 May return OK, NotFound, BadRequest
@@ -39,7 +39,7 @@ func GetCarpoolGroupsByCompanyName(c *gin.Context) {
 }
 
 /*
-POST /
+POST /AddEmployeeToCarpoolGroup
 Given an employee workEmail and a carpoolGroupID,
 try adding the related employee to the carpoolGroup.
 May return OK, NotFound, BadRequest
