@@ -64,15 +64,19 @@ export class GroupViewComponent implements OnInit {
   constructor(private _groupJoinService : GroupJoinService) { }
 
   ngOnInit(): void {
-    console.log(this.groups[0]);
+    console.log(this._groupJoinService.comparePrefs("test"));
   }
 
-  joinGroup(id : number) {
+  //Add user to group
+  joinGroup(id : any) {
+    console.log(id);
     this._groupJoinService.joinGroup(id, this.groups);
   }
 
-  comparePrefs(group : any) {
-    return this._groupJoinService.comparePrefs(group.id);
+  //Compare preferences 
+  async comparePrefs(group : any) {
+    //return this._groupJoinService.comparePrefs(group.id);
+    return 0;
   }
 
 }

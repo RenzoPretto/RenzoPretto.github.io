@@ -19,6 +19,21 @@
                 "address": "320 Southeast 3rd Street, Gainesville, FL, USA",
                 "gender": "Male",
                 "phoneNum": "(305)123-3207"  }
+        ],
+        "id": 1,
+        "preferences": [
+            "Empty",
+            "Renzo",
+            "9120",
+            "123",
+            "Empty",
+            3,
+            5,
+            2,
+            "Empty",
+            true,
+            false,
+            true
         ]
     }
 }

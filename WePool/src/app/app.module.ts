@@ -18,6 +18,7 @@ import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './home-files';
 import { GroupRouterComponent } from './carpool-files/group-router/group-router.component';
 import { GroupViewComponent } from './moderation-files/group-view/group-view.component';
+import { AdministrationComponent } from './moderation-files/administration/administration.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { GroupViewComponent } from './moderation-files/group-view/group-view.com
     SurveyComponent,
     QuestionComponent,
     QuestionLoaderComponent,
-    GroupViewComponent
+    GroupViewComponent,
+    AdministrationComponent
   ],
   imports: [
     BrowserAnimationsModule,
