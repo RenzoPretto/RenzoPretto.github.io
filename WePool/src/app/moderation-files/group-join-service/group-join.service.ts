@@ -8,9 +8,8 @@ export class GroupJoinService {
 
   userData :  any;
 
-  constructor(private _groupInfoService : GroupServiceService, ) { 
-    //Load in user from state
-    this.userData = "Renzo";
+  constructor(private _groupInfoService : GroupServiceService) { 
+
   }
 
   //Returns groups in order of compatibility with user
@@ -19,11 +18,13 @@ export class GroupJoinService {
   }
 
   //Compares preferences between user and group and returns the amount of matches
-  async comparePrefs(groupID: any) {
+  async comparePrefs(groupID: any) : Promise<number>{
+    this.userData = await this._groupInfoService.getUser("renzo");
+    this.userData = this.userData.userData;
+    //console.log(this.userData);
     let groupData = await this._groupInfoService.getGroupPreferences(groupID);
-    groupData = groupData.groupData.preferences;
-    console.log(groupData);
-    let count : number = 3;
+    //console.log("Group Data: " + groupData);
+    let count = 3;
     if (Math.abs(parseInt(this.userData[6])-parseInt(groupData[6])) <= 1) {
       count++;
     }
@@ -33,15 +34,22 @@ export class GroupJoinService {
     if (Math.abs(parseInt(this.userData[8])-parseInt(groupData[8])) <= 1) {
       count++;
     }
+    console.log("1");
+
     if (this.userData[10] != groupData[10]) {
       return 0;
     }
+    console.log("2");
+
     if (this.userData[11] != groupData[11]) {
       return 0;
     }
+    console.log("3");
+
     if (this.userData[12] != groupData[12]) {
       return 0;
     }
+    console.log(count);
     return count;
   }
 

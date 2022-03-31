@@ -64,7 +64,7 @@ export class GroupViewComponent implements OnInit {
   constructor(private _groupJoinService : GroupJoinService) { }
 
   ngOnInit(): void {
-    console.log(this._groupJoinService.comparePrefs("test"));
+    
   }
 
   //Add user to group
@@ -75,8 +75,9 @@ export class GroupViewComponent implements OnInit {
 
   //Compare preferences 
   async comparePrefs(group : any) {
-    //return this._groupJoinService.comparePrefs(group.id);
-    return 0;
+    let ret = await this._groupJoinService.comparePrefs(group.id);
+    //console.log(ret);
+    return  ret;
   }
 
 }
