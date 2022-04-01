@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { SelectorMatcher } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Loader } from '@googlemaps/js-api-loader';
+import { delay } from 'cypress/types/bluebird';
 import { GlobalConstants } from '../../../common/global-constants';
 
 @Component({
@@ -9,11 +12,12 @@ import { GlobalConstants } from '../../../common/global-constants';
 })
 export class LocationAutocompleteComponent implements OnInit {
 
-  oriInput = "originInput";
-  destInput = "destinationInput"
   autocomplete: google.maps.places.Autocomplete;
 
   constructor() { }
+
+  place;
+  @Output() updateAddress = new EventEmitter<string>();
 
   loader = new Loader({
     apiKey: GlobalConstants.myKey,
@@ -23,8 +27,11 @@ export class LocationAutocompleteComponent implements OnInit {
 
   //Initializes each autocomplete fields on page
   ngOnInit(): void {
-    this.loadFile(this.oriInput);
-    this.loadFile(this.destInput);
+    this.loadFile("search");
+  }
+
+  ngOnChanges() {
+    
   }
 
   //Code for initializing autocomplete object
@@ -36,14 +43,12 @@ export class LocationAutocompleteComponent implements OnInit {
           componentRestrictions: {'country': ['US']},
           fields: ['name']
         });
+    }).then(() => {
+      this.autocomplete.addListener('place_changed', () => {
+        this.place = this.autocomplete.getPlace();
+        this.updateAddress.emit(this.place);
+      });
     })
-  }
-
-  //Retrieves values from inputs
-  getVal() {
-    let ori = (<HTMLInputElement>document.getElementById(this.oriInput)).value;
-    let dest = (<HTMLInputElement>document.getElementById(this.destInput)).value;
-    return {ori, dest};
   }
 
 }

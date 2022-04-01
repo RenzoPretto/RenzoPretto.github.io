@@ -18,21 +18,21 @@
             <span *ngSwitchCase="'textbox'" class="textbox">
                 <mat-form-field class="mat-form-field">
                     <mat-label style="color: white;">Input</mat-label>
-                    <input matInput [(ngModel)]="inputText" (ngModelChange)="updateInput($event)">
+                    <input matInput [(ngModel)]="inputText" (ngModelChange)="updateInput()">
                 </mat-form-field>
             </span>
             <span *ngSwitchCase="'company'" class="company">
                 <mat-form-field appearance="fill">
                     <mat-label style="color:white">Company</mat-label>
-                    <mat-select style="color:white">
+                    <mat-select style="color:white" (selectionChange)="updateCompany($event)">
                         <mat-option style="color:white; background-color: #8a46b8;" class="companys" *ngFor="let company of companys" [value]="company.value">
-                          {{company.viewValue}}
+                          {{company.value}}
                         </mat-option>
                     </mat-select>
                   </mat-form-field>
             </span>
             <div *ngSwitchCase="'address'" class="address">
-                <AutocompleteComponent></AutocompleteComponent>
+                <AutocompleteComponent #search (updateAddress)="updateAddress($event)"></AutocompleteComponent>
             </div>
         </div>
     </mat-card>
