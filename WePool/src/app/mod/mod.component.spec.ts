@@ -7,15 +7,15 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { ModerationComponent } from './moderation.component';
+import { ModComponent } from './mod.component';
 
 describe('ModComponent', () => {
-  let component: ModerationComponent;
-  let fixture: ComponentFixture<ModerationComponent>;
+  let component: ModComponent;
+  let fixture: ComponentFixture<ModComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ModerationComponent],
+      declarations: [ModComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('ModComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModerationComponent);
+    fixture = TestBed.createComponent(ModComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

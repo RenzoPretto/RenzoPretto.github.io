@@ -18,6 +18,13 @@ import { LoginComponent } from './account-files';
 import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './home-files';
 import { GroupRouterComponent } from './carpool-files/group-router/group-router.component';
+import { ModComponent } from './mod/mod.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -35,7 +42,9 @@ import { GroupRouterComponent } from './carpool-files/group-router/group-router.
     GroupRouterComponent,
     SurveyComponent,
     QuestionComponent,
-    QuestionLoaderComponent
+    QuestionLoaderComponent,
+    ModerationComponent,
+    ModComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +52,13 @@ import { GroupRouterComponent } from './carpool-files/group-router/group-router.
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

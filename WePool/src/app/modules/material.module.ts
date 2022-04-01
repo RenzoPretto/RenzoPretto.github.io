@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatGridListModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule
   ],
   imports: [
     MatButtonModule,
@@ -36,7 +38,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
     MatToolbarModule,
     MatExpansionModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }
