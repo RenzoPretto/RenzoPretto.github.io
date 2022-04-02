@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { GlobalConstants } from 'src/app/common/global-constants';
-import { GroupServiceService } from '../group-service/group-service.service';
+import { GroupServiceService } from 'src/app/services/group-service/group-service.service';
 
 @Component({
   selector: 'group-router',
