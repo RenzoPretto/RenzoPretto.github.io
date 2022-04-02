@@ -18,12 +18,10 @@ export class GroupJoinService {
   }
 
   //Compares preferences between user and group and returns the amount of matches
-  async comparePrefs(groupID: any) : Promise<number>{
+  async comparePrefs(groupID: any): Promise<number>{
     this.userData = await this._groupInfoService.getUser("renzo");
-    this.userData = this.userData.userData;
-    //console.log(this.userData);
+    this.userData = this.userData.userData.preferences;
     let groupData = await this._groupInfoService.getGroupPreferences(groupID);
-    //console.log("Group Data: " + groupData);
     let count = 3;
     if (Math.abs(parseInt(this.userData[6])-parseInt(groupData[6])) <= 1) {
       count++;
@@ -34,19 +32,7 @@ export class GroupJoinService {
     if (Math.abs(parseInt(this.userData[8])-parseInt(groupData[8])) <= 1) {
       count++;
     }
-    console.log("1");
-
-    if (this.userData[10] != groupData[10]) {
-      return 0;
-    }
-    console.log("2");
-
-    if (this.userData[11] != groupData[11]) {
-      return 0;
-    }
-    console.log("3");
-
-    if (this.userData[12] != groupData[12]) {
+    if (this.userData[10] != groupData[10] || this.userData[11] != groupData[11] || this.userData[12] != groupData[12]) {
       return 0;
     }
     console.log(count);

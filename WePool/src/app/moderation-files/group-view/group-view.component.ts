@@ -61,23 +61,20 @@ export class GroupViewComponent implements OnInit {
     }
   }];
 
-  constructor(private _groupJoinService : GroupJoinService) { }
+  constructor(public groupJoinService : GroupJoinService) { }
 
-  ngOnInit(): void {
-    
+  matches: number[] = [];
+
+  async ngOnInit(): Promise<void> {
+    for(const group of this.groups) {
+        this.matches.push(await this.groupJoinService.comparePrefs(group));
+    }
   }
 
   //Add user to group
   joinGroup(id : any) {
     console.log(id);
-    this._groupJoinService.joinGroup(id, this.groups);
-  }
-
-  //Compare preferences 
-  async comparePrefs(group : any) {
-    let ret = await this._groupJoinService.comparePrefs(group.id);
-    //console.log(ret);
-    return  ret;
+    this.groupJoinService.joinGroup(id, this.groups);
   }
 
 }

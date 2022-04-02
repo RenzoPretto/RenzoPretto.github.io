@@ -10,11 +10,14 @@
             </ng-template>
             <mat-card-content>
                 <span>Riders:</span>
-                <span *ngFor="let user of group.groupData.users; index as i;" >
+                <span *ngFor="let user of group.groupData.users;" >
                     {{user.name}}
                 </span>
                 <div>
-                    Preference match: {{comparePrefs(group)}}/6
+                    Preference match: {{matches[i]}}/6
+                </div>
+                <div>
+                    Destination: {{group.groupData.destination}}
                 </div>
             </mat-card-content>
             <mat-card-actions align="end">
