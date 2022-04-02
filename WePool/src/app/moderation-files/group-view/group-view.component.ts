@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupServiceService } from '../../carpool-files/group-service/group-service.service';
-import { GroupJoinService } from '../group-join-service/group-join.service';
+import { GroupJoinService } from 'src/app/services/group-join-service/group-join.service';
 
 @Component({
   selector: 'group-view',
