@@ -10,7 +10,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MapPOCComponent, LocationAutocompleteComponent, CarpoolsComponent, GroupInfoComponent } from './carpool-files';
-import { ModerationComponent } from './moderation-files';
+import { ModerationComponent, } from './moderation-files';
 import { SurveyComponent, QuestionComponent, QuestionLoaderComponent } from './profile';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './account-files';
@@ -44,7 +44,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     QuestionComponent,
     QuestionLoaderComponent,
     GroupViewComponent,
-    AdministrationComponent
+    AdministrationComponent,
     ModerationComponent,
     ModComponent
   ],
