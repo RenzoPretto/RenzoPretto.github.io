@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupServiceService } from '../group-service/group-service.service';
+import { GroupServiceService } from 'src/app/services/group-service/group-service.service';
 
 @Component({
   selector: 'group-info',
