@@ -18,6 +18,8 @@ func ConnectDatabase() {
 		&Location{},
 		&Company{},
 		&Session{},
+		&CarpoolGroup{},
+		&Preferences{},
 	)
 	DB = database
 }
