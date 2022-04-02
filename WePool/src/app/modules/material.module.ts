@@ -28,7 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatExpansionModule,
     MatSlideToggleModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
     MatTableModule
   ],
   imports: [
@@ -44,7 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatFormFieldModule,
     MatSlideToggleModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
     MatTableModule
   ]
 })
