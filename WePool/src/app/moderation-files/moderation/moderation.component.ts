@@ -38,7 +38,6 @@ export class ModerationComponent {
           { title: 'Company Join Requests', cols: 1, rows: 1 }
         ];
       }
-
       return [
         { title: 'Carpool Groups', cols: 2, rows: 1 },
         { title: 'User Join Requests', cols: 1, rows: 1 },
