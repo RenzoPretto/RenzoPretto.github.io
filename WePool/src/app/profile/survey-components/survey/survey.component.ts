@@ -16,8 +16,8 @@ export class SurveyComponent implements OnInit {
   //Questions that will be used for now
   questions = [{question: "Personal Info", type: "label"},
                {question: "My full name is...", type: "textbox"},
-               {question: "My address is...", type: "textbox"},
-               {question: "My work location is...", type: "textbox"},
+               {question: "My address is...", type: "address"},
+               {question: "My work location is...", type: "company"},
                {question: "Preferences", type: "label"},
                {question: "When I ride I am talkative and lovet to catch up with my coworkers about their out of work happenings!", type: "slider"},
                {question: "I like to keep it chilly in the car, the cold helps me wake up!", type: "slider"},

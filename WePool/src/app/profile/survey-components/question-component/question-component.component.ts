@@ -14,6 +14,14 @@ export class QuestionComponent implements OnInit {
   @ViewChild('inputText') inputText: HTMLInputElement;
   @Output() newItemEvent = new EventEmitter<string>();
 
+  companys = [
+    {value: 'one1'},
+    {value: 'two2'},
+    {value: 'three3'},
+  ];
+  value;
+  @ViewChild('search' , {static: false}) search;
+
   constructor() { 
   }
 
@@ -25,6 +33,10 @@ export class QuestionComponent implements OnInit {
       this.updateItem("1");
     } else if (this.type=="textbox") {
       this.updateItem("");
+    } else if (this.type=="address") {
+      this.updateItem("");
+    } else if (this.type=="company") {
+      this.updateItem("");
     } else {
       this.updateItem("Empty");
     }
@@ -35,7 +47,7 @@ export class QuestionComponent implements OnInit {
     this.newItemEvent.emit(value);
   }
   
-  //Following three update the input value in this class whenever a change is made on the page
+  //Following update the input value in this class whenever a change is made on the page
   updateElement(event) {
     this.input = event.value;
     this.updateItem(this.input);
@@ -46,9 +58,19 @@ export class QuestionComponent implements OnInit {
     this.updateItem(this.input);
   }
 
-  updateInput(event) {
+  updateInput() {
     this.input = this.inputText.toString();
     this.updateItem(this.input);
   }
+
+  updateCompany(event) {
+    this.input = event.value;
+    this.updateItem(this.input);
+  }
+
+  updateAddress(event) {
+    this.updateItem(event.name);
+  }
+
 
 }
