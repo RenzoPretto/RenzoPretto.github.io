@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GroupServiceService } from '../group-service/group-service.service';
 
 @Component({
   selector: 'group-info',
@@ -8,13 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 //The purpose of this component is to display users and their information. Information may be up to change.
 export class GroupInfoComponent implements OnInit {
 
-  constructor() { }
+  group: any;
+
+  constructor(private _groupInfoService : GroupServiceService) {
+   }
 
   ngOnInit(): void {
+    this._groupInfoService.getGroup().then(data => {
+      this.group = data.users; 
+    });
   }
   
   panelOpenState = false;
-
-  @Input() group: any;
+  @Input() panelState;
 
 }

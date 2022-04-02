@@ -28,7 +28,7 @@ export class QuestionComponent implements OnInit {
   //Initiates value according to type
   ngOnInit(): void {
     if (this.type=="checkbox") {
-      this.updateItem("false");
+      this.updateItem(false);
     } else if (this.type=="slider") {
       this.updateItem("1");
     } else if (this.type=="textbox") {
@@ -43,7 +43,7 @@ export class QuestionComponent implements OnInit {
   }
 
   //Updates value in parent component
-  updateItem(value: string) {
+  updateItem(value: any) {
     this.newItemEvent.emit(value);
   }
   

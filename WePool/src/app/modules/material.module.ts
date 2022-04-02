@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -28,6 +29,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule
+    MatTableModule
   ],
   imports: [
     MatButtonModule,
@@ -43,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSlideToggleModule,
     MatOptionModule,
     MatSelectModule
+    MatTableModule
   ]
 })
 export class MaterialModule { }

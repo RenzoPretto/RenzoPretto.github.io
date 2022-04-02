@@ -25,7 +25,8 @@ func main() {
 	router.POST("/login", controller.UserLogin)
 	router.POST("/login-session", controller.Login)
 	router.POST("/logout", controller.Logout)
-
+	router.POST("/add-employee-to-carpool-group", controller.AddEmployeeToCarpoolGroup)
+	router.POST("/get-carpool-groups-by-company-name", controller.GetCarpoolGroupsByCompanyName)
 	err := router.Run(":8000")
 	if err != nil {
 		panic(err)

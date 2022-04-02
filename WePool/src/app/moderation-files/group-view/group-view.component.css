@@ -1,0 +1,9 @@
+.card {
+    margin: 10px;
+    height: 200px;
+    width: 700px;
+}
+.groupInfo {
+    position: relative;
+    top: 15px;
+}

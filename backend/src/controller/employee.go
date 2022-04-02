@@ -128,7 +128,7 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
-	if err := model.DB.Where("work_email = ? AND password=?", input.WorkEmail, input.Password).First(&employee).Error; err != nil {
+	if err := model.DB.Where("work_email = ? AND password = ?", input.WorkEmail, input.Password).First(&employee).Error; err != nil {
 		c.JSON(401, gin.H{"error": "Invalid email or password"})
 		return
 	}

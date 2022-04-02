@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdministrationComponent } from './moderation-files/administration/administration.component';
 import { CarpoolsComponent } from './carpool-files/carpools/carpools.component';
 import { HomeComponent } from './home-files/home/home.component';
 import { LoginComponent } from './account-files/login/login.component';
 import { ModerationComponent } from './moderation-files/moderation/moderation.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdministrationComponent } from './moderation-files/administration/administration.component';
 
 
 const routes: Routes = [
