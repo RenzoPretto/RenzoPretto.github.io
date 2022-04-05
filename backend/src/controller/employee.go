@@ -1,8 +1,8 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"wepool.com/src/model"
 )
@@ -20,6 +20,29 @@ type ChangePasswordInput struct {
 
 type AuthenticationInput struct {
 	SessionID int `json:"sessionID" binding:"required"`
+}
+
+type CarpoolGroupEmployees struct {
+    WorkEmail string `json:"workEmail" binding:"required"`
+}
+
+func GetEmployeeCarpoolGroupInfo(c *gin.Context) {
+	var employee model.Employee
+	var EmployeeInput CarpoolGroupEmployees
+
+	if err := c.ShouldBindJSON(&EmployeeInput); err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}		
+	result:= model.DB.Preload("CarpoolGroup").Preload("CarpoolGroup.Employees").Preload("CarpoolGroup.Location").Preload("CarpoolGroup.Employees.Homelocation").Preload("CarpoolGroup.Employees.Profile").Where("work_email= ?", EmployeeInput.WorkEmail).First(&employee)	
+	if result.Error != nil {	
+		fmt.Println("Error", result.Error)
+		c.JSON(http.StatusNotFound, result.Error)
+		return
+	}
+	
+	c.JSON(200, employee)
+	return
 }
 
 /*
