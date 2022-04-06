@@ -29,6 +29,7 @@ func main() {
 	router.POST("/get-carpool-groups-by-company-name", controller.GetCarpoolGroupsByCompanyName)
 	router.POST("/employee/carpool-group", controller.GetEmployeeCarpoolGroupInfo)
 	router.POST("/employee/profile", controller.GetEmployeeProfile)
+	router.PUT("/employee/preferences", controller.UpdateEmployeePreferences)
 
 	err := router.Run(":8000")
 	if err != nil {
