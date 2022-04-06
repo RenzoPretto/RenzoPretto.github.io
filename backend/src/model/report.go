@@ -9,4 +9,6 @@ type Report struct {
 	IssueDescription     string     `json:"issueDescription"`
 	EmployeeID uint `json:"employeeId"`
 	Employee Employee `json:"employee,omitempty"`
+	CompanyID uint `json:"companyID"`
+	Company Company `json:"company,omitempty"`
 }
