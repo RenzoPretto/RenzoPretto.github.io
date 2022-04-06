@@ -41,6 +41,12 @@ type EmployeePreferences struct {
 	Preferences Preferences `json:"preferences" binding:"required"`
 }
 
+type Report struct {
+	PetitionerEmail      string         `json:"petitionerEmail"`
+	OffenderEmail        string         `json:"offenderEmail"`
+	IssueDescription     string     `json:"issueDescription"`
+}
+
 func GetEmployeeProfile(c *gin.Context) {
 	var employee model.Employee
 	var EmployeeInput CarpoolGroupEmployees
@@ -102,6 +108,32 @@ func GetEmployeeCarpoolGroupInfo(c *gin.Context) {
 	}
 	
 	c.JSON(200, employee)
+	return
+}
+
+func CreateEmployeeReport(c *gin.Context) {
+	var ReportInput Report
+	var Employee model.Employee
+
+	if err := c.ShouldBindJSON(&ReportInput); err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}		
+	result:= model.DB.Where("work_email= ?", ReportInput.PetitionerEmail).First(&Employee)	
+	if result.Error != nil {	
+		fmt.Println("Error", result.Error)
+		c.JSON(http.StatusNotFound, result.Error)
+		return
+	}
+	report := model.Report{
+		PetitionerEmail:  ReportInput.PetitionerEmail,
+		OffenderEmail:    ReportInput.OffenderEmail,
+		IssueDescription: ReportInput.IssueDescription,
+		EmployeeID:       Employee.ID,
+	}
+	model.DB.Create(&report);
+
+	c.JSON(200, report)
 	return
 }
 
