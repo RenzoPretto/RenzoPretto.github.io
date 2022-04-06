@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { ModAuthguardService } from 'src/app/services/Authguard-service/mod_authguard_service';
+import { ModAuthguardService } from 'src/app/services/Authguard-service/mod_authguard.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
