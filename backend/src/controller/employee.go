@@ -26,6 +26,21 @@ type CarpoolGroupEmployees struct {
     WorkEmail string `json:"workEmail" binding:"required"`
 }
 
+type Preferences struct {
+	Talkativeness int    `json:"talkativeness"` // Talkativeness, on a scale of 1 to 5 (highest)
+	Music         bool   `json:"music"`         // Whether or not music should be played
+	Temperature   int    `json:"temperature"`   // Temperature preference, in degrees Celsius
+	Mask          bool   `json:"mask"`          // Whether or not a mask is required
+	Food          bool   `json:"food"`          // Whether or not food is allowed
+	Smoking       bool   `json:"smoking"`       // Whether or not smoking is allowed
+	Gender        string `json:"gender"`        // Oneof: male, female, any
+}
+
+type EmployeePreferences struct {
+	WorkEmail string `json:"workEmail" binding:"required"`
+	Preferences Preferences `json:"preferences" binding:"required"`
+}
+
 func GetEmployeeProfile(c *gin.Context) {
 	var employee model.Employee
 	var EmployeeInput CarpoolGroupEmployees
@@ -42,6 +57,32 @@ func GetEmployeeProfile(c *gin.Context) {
 	}
 	
 	c.JSON(200, employee)
+	return
+}
+
+func UpdateEmployeePreferences(c *gin.Context) {
+	var employee model.Employee
+	var preferences model.Preferences
+	var EmployeePreferences EmployeePreferences
+
+	if err := c.ShouldBindJSON(&EmployeePreferences); err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}	
+
+	if err := model.DB.Preload("Preferences").Where("work_email = ?", EmployeePreferences.WorkEmail).First(&employee).Error; err != nil {
+	  c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+	  return
+	}
+
+	if err := model.DB.Where("id = ?", employee.PreferencesID).First(&preferences).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
+		return
+	  }
+
+	  model.DB.Model(&preferences).Updates(EmployeePreferences.Preferences);
+	
+	c.JSON(200, preferences)
 	return
 }
 

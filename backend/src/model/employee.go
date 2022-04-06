@@ -6,6 +6,7 @@ type Employee struct {
 	gorm.Model
 	WorkEmail     string `json:"workEmail" gorm:"unique_index"`
 	Password      string `json:"password"`
+	Preferences Preferences `json:"preferences,omitempty"`
 	PreferencesID uint   `json:"preferencesID"`
 	CarpoolGroupID uint `json:"carpoolGroupId"`
 	CarpoolGroup CarpoolGroup `json:"carpoolGroup,omitempty"`
