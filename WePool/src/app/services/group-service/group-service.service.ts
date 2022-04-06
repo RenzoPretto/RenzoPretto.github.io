@@ -42,6 +42,14 @@ export class GroupServiceService {
       }
     );
   }  
+
+  //Sends user report to company
+  sendReport(report : string) {
+    console.log(report);
+    //API call to send report to company
+    let user = "renzo";
+    let company = "one"
+  }
 }
 
 function parseJSON(data: any) {

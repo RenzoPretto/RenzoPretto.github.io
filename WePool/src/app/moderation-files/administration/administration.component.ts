@@ -14,7 +14,7 @@ export class AdministrationComponent implements OnInit {
   ngOnInit(): void {
     //Initialize user type on initialization of page. Load in potential groups on user, "Please sign in!" on not signed in, 
     //and "Group Selected!" on group already selected.
-    this.userType = "signedIn";
+    this.userType = "groupSelected";
   }
 
 }
