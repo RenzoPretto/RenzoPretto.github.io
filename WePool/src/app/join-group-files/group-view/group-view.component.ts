@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupJoinService } from 'src/app/services/group-join-service/group-join.service';
+import { GroupService } from 'src/app/services/group-service/group.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'group-view',
@@ -60,20 +61,20 @@ export class GroupViewComponent implements OnInit {
     }
   }];
 
-  constructor(public groupJoinService : GroupJoinService) { }
+  constructor(public groupService: GroupService, public userService: UserService) { }
 
   matches: number[] = [];
 
   async ngOnInit(): Promise<void> {
     for(const group of this.groups) {
-        this.matches.push(await this.groupJoinService.comparePrefs(group));
+        this.matches.push(await this.userService.comparePrefs(group));
     }
   }
 
   //Add user to group
   joinGroup(id : any) {
     console.log(id);
-    this.groupJoinService.joinGroup(id, this.groups);
+    this.groupService.joinGroup(id, this.groups);
   }
 
 }
