@@ -25,7 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { AuthguardServiceService } from './authguard-service.service';
+import { AuthguardServiceService } from './services/Authguard-service/authguard-service.service';
+import { ModAuthguardService } from './services/Authguard-service/mod_authguard_service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { AuthguardServiceService } from './authguard-service.service';
     MatButtonModule,
     LayoutModule
   ],
-  providers: [AuthguardServiceService],
+  providers: [AuthguardServiceService, ModAuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

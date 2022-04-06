@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit()  {
     localStorage.removeItem('SessionUser');
+    localStorage.removeItem('IsMod');
   }
 
   authServiceR(){
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    localStorage.setItem('SessionUser','1')  
+    localStorage.setItem('SessionUser','1')
     this.authServiceR().subscribe(
       (res) => {
         if (res.status == 201) {
@@ -62,7 +63,8 @@ export class LoginComponent implements OnInit {
     
 
   login() {
-    localStorage.setItem('SessionUser','1')  
+    localStorage.setItem('SessionUser','1')
+    localStorage.setItem('IsMod','1')
     this.authServiceL().subscribe(
       (res) => {
         if (res.status == 200) {
