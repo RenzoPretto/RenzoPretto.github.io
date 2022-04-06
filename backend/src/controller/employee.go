@@ -26,6 +26,25 @@ type CarpoolGroupEmployees struct {
     WorkEmail string `json:"workEmail" binding:"required"`
 }
 
+func GetEmployeeProfile(c *gin.Context) {
+	var employee model.Employee
+	var EmployeeInput CarpoolGroupEmployees
+
+	if err := c.ShouldBindJSON(&EmployeeInput); err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}	
+	result:= model.DB.Preload("Profile").Where("work_email= ?", EmployeeInput.WorkEmail).First(&employee)	
+	if result.Error != nil {	
+		fmt.Println("Error", result.Error)
+		c.JSON(http.StatusNotFound, result.Error)
+		return
+	}
+	
+	c.JSON(200, employee)
+	return
+}
+
 func GetEmployeeCarpoolGroupInfo(c *gin.Context) {
 	var employee model.Employee
 	var EmployeeInput CarpoolGroupEmployees
