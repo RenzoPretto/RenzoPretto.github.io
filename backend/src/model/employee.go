@@ -15,5 +15,7 @@ type Employee struct {
 	Profile Profile `json:"profile,omitempty"`
 	ProfileID uint `json:"profileID"`
 	Reports []Report `json:"report"`
+	CompanyID uint `json:"companyID"`
+	Company Company `json:"company,omitempty"`
 }
 

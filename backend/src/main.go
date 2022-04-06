@@ -31,6 +31,7 @@ func main() {
 	router.POST("/employee/profile", controller.GetEmployeeProfile)
 	router.PUT("/employee/preferences", controller.UpdateEmployeePreferences)
 	router.POST("/employee/report", controller.CreateEmployeeReport)
+	router.POST("/company/report", controller.GetCompanyReports)
 
 	err := router.Run(":8000")
 	if err != nil {
