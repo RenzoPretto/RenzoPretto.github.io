@@ -10,14 +10,14 @@
             </ng-template>
             <mat-card-content>
                 <span>Riders:</span>
-                <span *ngFor="let user of group.groupData.users;" >
-                    {{user.name}}
+                <span *ngFor="let user of group.Employees; index as k" >
+                    {{user.Profile.FirstName}}
                 </span>
                 <div>
-                    Preference match: {{matches[i]}}/6
+                    Preference match: {{matches[i].matches}}/6
                 </div>
                 <div>
-                    Destination: {{group.groupData.destination}}
+                    Destination: {{group.Location}}
                 </div>
             </mat-card-content>
             <mat-card-actions align="end">

@@ -9,71 +9,31 @@ import { UserService } from 'src/app/services/user-service/user.service';
 })
 export class GroupViewComponent implements OnInit {
 
-  groups = [{
-    "groupData" : {
-        "destination" : "Reitz Student Union, Gainesville, FL, USA",
-        "schedule": 1529644667834,
-        "users" : [
-            {   "name": "Renzo",
-                "address": "311 Southwest 13th Street, Gainesville, FL, USA" },
-            {   "name": "Ganesh",
-                "address": "2800 Southwest 35th Place, Gainesville, FL, USA" },
-            {   "name": "Daniel",
-                "address": "112 Center Drive, Gainesville, FL, USA" }, 
-            {   "name": "Chris",
-                "address": "320 Southeast 3rd Street, Gainesville, FL, USA" }
-        ],
-        "id" : 123
-    }
-  },
-  {
-    "groupData" : {
-        "destination" : "Reitz Student Union, Gainesville, FL, USA",
-        "schedule": 1529644667834,
-        "users" : [
-            {   "name": "Renzo",
-                "address": "311 Southwest 13th Street, Gainesville, FL, USA" },
-            {   "name": "Ganesh",
-                "address": "2800 Southwest 35th Place, Gainesville, FL, USA" },
-            {   "name": "Daniel",
-                "address": "112 Center Drive, Gainesville, FL, USA" }, 
-            {   "name": "Chris",
-                "address": "320 Southeast 3rd Street, Gainesville, FL, USA" }
-        ],
-        "id" : 1234
-    }
-  },
-  {
-    "groupData" : {
-        "destination" : "Reitz Student Union, Gainesville, FL, USA",
-        "schedule": 1529644667834,
-        "users" : [
-            {   "name": "Renzo",
-                "address": "311 Southwest 13th Street, Gainesville, FL, USA" },
-            {   "name": "Ganesh",
-                "address": "2800 Southwest 35th Place, Gainesville, FL, USA" },
-            {   "name": "Daniel",
-                "address": "112 Center Drive, Gainesville, FL, USA" }, 
-            {   "name": "Chris",
-                "address": "320 Southeast 3rd Street, Gainesville, FL, USA" }
-        ],
-        "id" : 12345
-    }
-  }];
-
   constructor(public groupService: GroupService, public userService: UserService) { }
 
-  matches: number[] = [];
+  groups = [];
+  matches: {index: number, matches: number}[] = [];
 
   async ngOnInit(): Promise<void> {
-    for(const group of this.groups) {
-        this.matches.push(await this.userService.comparePrefs(group));
+    this.groups = await this.groupService.getGroups("one");
+    for(let i: number = 0; i < this.groups.length; i++) {
+        console.log(this.groups[i]);
+        let val = await this.userService.comparePrefs(this.groups[i]);
+        console.log(val);
+        this.matches.push({"index": i, "matches": val});
     }
+    this.matches.sort(function (a, b) {
+        if (a.matches < b.matches)
+            return 1;
+        if (a.matches > b.matches)
+            return -1;
+        return 0;
+    })
+    console.log(this.matches);
   }
 
   //Add user to group
   joinGroup(id : any) {
-    console.log(id);
     this.groupService.joinGroup(id, this.groups);
   }
 

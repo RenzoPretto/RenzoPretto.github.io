@@ -7,13 +7,9 @@ import { Injectable } from '@angular/core';
 export class GroupService {
 
   private _groupUrl = "./assets/data/group-data.json";
+  private _groupsUrl = "./assets/data/groups-data.json";
 
   constructor(private http: HttpClient) { }
-
-  //Returns groups in order of compatibility with user
-  orderGroupsByPreferences(groups : any) {
-    
-  }
 
   //User joins group using their id and groups id
   joinGroup(buttonID : number, groups : any) {
@@ -44,7 +40,18 @@ export class GroupService {
         return parseJSON(res).Preferences;
       }
     );
-  }  
+  } 
+  
+  //Get groups from company
+  async getGroups(group: string) {
+    let url = group;
+    return this.http.get(this._groupsUrl).toPromise()
+    .then(
+      res => { // Success
+        return parseJSON(res);
+      }
+    );
+  }
 
 }
 
