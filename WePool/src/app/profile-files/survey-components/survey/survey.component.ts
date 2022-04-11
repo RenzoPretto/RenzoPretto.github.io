@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'survey',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 //Component created to handle styling of survey page without touching other areas
 export class SurveyComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +17,7 @@ export class SurveyComponent implements OnInit {
   //Questions that will be used for now
   questions = [{question: "Personal Info", type: "label"},
                {question: "My full name is...", type: "textbox"},
+               {question: "My gender is...", type: "textbox"},
                {question: "My address is...", type: "address"},
                {question: "My work location is...", type: "company"},
                {question: "Preferences", type: "label"},
@@ -25,11 +27,34 @@ export class SurveyComponent implements OnInit {
                {question: "Must Haves", type: "label"},
                {question: "Food in the car?", type: "checkbox"},
                {question: "Smoking in the car?", type: "checkbox"},
-               {question: "I want to ride with only the same geneder.", type: "checkbox"}];
+               {question: "I want to ride with only the same gender.", type: "checkbox"}];
   items = [];
+  preferences = {
+    "Talkativeness": 0,
+    "Music": 0,
+    "Temperature": 0,
+    "Mask": false,
+    "Food": false,
+    "Smoking": false,
+    "Gender": "male"
+  }
 
-  addItem(newItem: string[]) {
+  async addItem(newItem: string[]) {
     this.items = newItem;
+    this.updatePreferences(newItem);
+    await this.userService.updateUserProfile(this.preferences);
+    console.log(this.preferences);
+  }
+
+  updatePreferences(newPrefs) {
+    this.preferences.Talkativeness = parseInt(newPrefs[6]);
+    this.preferences.Temperature = parseInt(newPrefs[7]);
+    this.preferences.Talkativeness = parseInt(newPrefs[8]);
+    this.preferences.Mask = newPrefs[10];
+    this.preferences.Food = newPrefs[11];
+    this.preferences.Smoking = newPrefs[12];
+    this.preferences.Gender = newPrefs[2];
+    console.log(this.preferences);
   }
 
 }
