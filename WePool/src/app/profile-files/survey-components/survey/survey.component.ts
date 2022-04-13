@@ -29,32 +29,43 @@ export class SurveyComponent implements OnInit {
                {question: "Smoking in the car?", type: "checkbox"},
                {question: "I want to ride with only the same gender.", type: "checkbox"}];
   items = [];
-  preferences = {
-    "Talkativeness": 0,
-    "Music": 0,
-    "Temperature": 0,
-    "Mask": false,
-    "Food": false,
-    "Smoking": false,
-    "Gender": "male"
+  profile = {
+
   }
 
   async addItem(newItem: string[]) {
-    this.items = newItem;
-    this.updatePreferences(newItem);
-    await this.userService.updateUserProfile(this.preferences);
-    console.log(this.preferences);
+    await this.userService.updateUserProfile(this.getProfile(newItem));
   }
 
-  updatePreferences(newPrefs) {
-    this.preferences.Talkativeness = parseInt(newPrefs[6]);
-    this.preferences.Temperature = parseInt(newPrefs[7]);
-    this.preferences.Talkativeness = parseInt(newPrefs[8]);
-    this.preferences.Mask = newPrefs[10];
-    this.preferences.Food = newPrefs[11];
-    this.preferences.Smoking = newPrefs[12];
-    this.preferences.Gender = newPrefs[2];
-    console.log(this.preferences);
+  getProfile(newPrefs) {
+    let preferences = {
+      "Talkativeness": 0,
+      "Music": 0,
+      "Temperature": 0,
+      "Mask": false,
+      "Food": false,
+      "Smoking": false,
+      "Gender": "male"
+    }
+    preferences.Talkativeness = parseInt(newPrefs[6]);
+    preferences.Temperature = parseInt(newPrefs[7]);
+    preferences.Talkativeness = parseInt(newPrefs[8]);
+    preferences.Mask = newPrefs[10];
+    preferences.Food = newPrefs[11];
+    preferences.Smoking = newPrefs[12];
+    preferences.Gender = newPrefs[2];
+    let name = newPrefs[1];
+    let split = name.split(" ");
+    let profile = {
+      "firstName": split[0],
+      "lastName": split[1]
+    }
+    return {
+      "preferences": preferences,
+      "profile": profile,
+      "homeLocation": newPrefs[3],
+      "workLocation": newPrefs[4]
+    }
   }
 
 }
