@@ -28,7 +28,7 @@ type CarpoolGroupEmployees struct {
 
 type Preferences struct {
 	Talkativeness int    `json:"talkativeness"` // Talkativeness, on a scale of 1 to 5 (highest)
-	Music         bool   `json:"music"`         // Whether or not music should be played
+	Music         int   `json:"music"`         // Whether or not music should be played
 	Temperature   int    `json:"temperature"`   // Temperature preference, in degrees Celsius
 	Mask          bool   `json:"mask"`          // Whether or not a mask is required
 	Food          bool   `json:"food"`          // Whether or not food is allowed
@@ -36,9 +36,25 @@ type Preferences struct {
 	Gender        string `json:"gender"`        // Oneof: male, female, any
 }
 
+type Homelocation struct {
+	Address  string `json:"address"`
+}
+
+type Location struct {
+	Address  string `json:"address"`
+}
+
+type Profile struct {
+	FirstName  string `json:"firstName"`
+	LastName  string `json:"lastName"`
+}
+
 type EmployeePreferences struct {
 	WorkEmail string `json:"workEmail" binding:"required"`
 	Preferences Preferences `json:"preferences" binding:"required"`
+	Homelocation Homelocation `json:"homeLocation" binding:"required"`
+	Location Location `json:"workLocation" binding:"required"`
+	Profile Profile `json:"profile" binding:"required"`
 }
 
 type Report struct {
@@ -68,7 +84,6 @@ func GetEmployeeProfile(c *gin.Context) {
 
 func UpdateEmployeePreferences(c *gin.Context) {
 	var employee model.Employee
-	var preferences model.Preferences
 	var EmployeePreferences EmployeePreferences
 
 	if err := c.ShouldBindJSON(&EmployeePreferences); err != nil {
@@ -76,19 +91,18 @@ func UpdateEmployeePreferences(c *gin.Context) {
 		return
 	}	
 
-	if err := model.DB.Preload("Preferences").Where("work_email = ?", EmployeePreferences.WorkEmail).First(&employee).Error; err != nil {
+	if err := model.DB.Preload("Homelocation").Preload("Preferences").Preload("Profile").Preload("CarpoolGroup.Location").Where("work_email = ?", EmployeePreferences.WorkEmail).First(&employee).Error; err != nil {
 	  c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 	  return
 	}
 
-	if err := model.DB.Where("id = ?", employee.PreferencesID).First(&preferences).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
-		return
-	  }
+	// TODO: Optimize by creating a DB session to do the transactions
+	model.DB.Model(&employee.Homelocation).Updates(EmployeePreferences.Homelocation);
+	model.DB.Model(&employee.Preferences).Updates(EmployeePreferences.Preferences);
+	model.DB.Model(&employee.Profile).Updates(EmployeePreferences.Profile);
+	model.DB.Model(&employee.CarpoolGroup.Location).Updates(EmployeePreferences.Location);
 
-	  model.DB.Model(&preferences).Updates(EmployeePreferences.Preferences);
-	
-	c.JSON(200, preferences)
+	c.JSON(200, &employee)
 	return
 }
 
