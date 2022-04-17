@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-administration',
-  templateUrl: './administration.component.html',
-  styleUrls: ['./administration.component.css']
+  selector: 'app-join-group',
+  templateUrl: './join-group.component.html',
+  styleUrls: ['./join-group.component.css']
 })
-export class AdministrationComponent implements OnInit {
+export class JoinGroupComponent implements OnInit {
 
   userType : any;
 
@@ -16,5 +16,4 @@ export class AdministrationComponent implements OnInit {
     //and "Group Selected!" on group already selected.
     this.userType = "signedIn";
   }
-
 }
