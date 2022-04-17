@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit()  {
     localStorage.removeItem('SessionUser');
     localStorage.removeItem('IsMod');
-    localStorage.removeItem('email');
+    localStorage.setItem('email','blank')
   }
 
   authServiceR(){
