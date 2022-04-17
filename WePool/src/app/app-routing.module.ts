@@ -4,7 +4,6 @@ import { CarpoolsComponent } from './carpool-files/carpools/carpools.component';
 import { HomeComponent } from './home-files/home/home.component';
 import { LoginComponent } from './account-files/login/login.component';
 import { ModerationComponent } from './moderation-files/moderation/moderation.component';
-import { AdministrationComponent } from './moderation-files/administration/administration.component';
 import { AuthenticationGuard } from './account-files/authguard/authentication.guard';
 import { ModGuard } from './account-files/authguard/mod_auth.guard';
 import { ProfileComponent } from './profile-files/profile.component';
