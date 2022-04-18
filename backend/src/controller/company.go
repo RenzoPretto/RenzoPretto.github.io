@@ -13,10 +13,15 @@ type CreateCompanyInput struct {
 	Domain string `json:"domain"`
 }
 
+
 type CompanyInput struct {
 	ID uint `json:"companyID" binding:"required"`
 }
 
+/*
+Given a name and a domain, create a company.
+May return OK, Bad Request.
+*/
 func CreateCompany(c *gin.Context) {
 	// Validate input
 	var input CreateCompanyInput
